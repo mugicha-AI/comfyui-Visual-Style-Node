@@ -1,0 +1,14 @@
+[project]
+name = "ComfyUI-VisualStyleNode"
+version = "1.0.0"
+description = "Visual Style Node — 风格类别图库（只保留风格类别一项）"
+license = { file = "LICENSE" }
+
+[tool.comfy]
+DisplayName = "comfyui-Visual Style Node"
+# 关键：用不含空格的 project.name 注册前端静态目录。
+# ComfyUI/nodes.py 会把 web 目录注册到 EXTENSION_WEB_DIRS[project.name]，
+# 即 /extensions/ComfyUI-VisualStyleNode/。若直接用「comfyui-Visual Style Node」
+# （含空格）作扩展名，aiohttp 的 web.static 前缀会被 requote 成 %20，
+# 而请求侧 path_safe 又解码回空格，导致所有静态资源 404。
+web = "web"
